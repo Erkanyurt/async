@@ -15,9 +15,11 @@ Traces::Provider(Async::Task) do
 		super do
 			Traces.trace_context = trace_context
 			
-			attributes = {
-				"annotation" => self.annotation,
-			}
+			if annotation = self.annotation
+				attributes = {
+					"annotation" => annotation
+				}
+			end
 			
 			Traces.trace('async.task', attributes: attributes) do
 				yield
