@@ -10,7 +10,6 @@ require_relative "task"
 
 require "io/event"
 
-require "console"
 require "resolv"
 
 module Async
@@ -434,7 +433,6 @@ module Async
 			# - Avoid scheduler overhead if no blocking operation is performed.
 			task.run(*arguments)
 			
-			# Console.debug "Initial execution of task #{fiber} complete (#{result} -> #{fiber.alive?})..."
 			return task
 		end
 		

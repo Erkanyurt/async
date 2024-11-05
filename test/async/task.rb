@@ -746,7 +746,10 @@ describe Async::Task do
 	
 	with "#result" do
 		it "does not raise exception" do
-			task = reactor.async do
+			task = reactor.async do |task|
+				# This prevents any logging and also any non-blocking behaviour, e.g. `io_write`...
+				expect(task).to receive(:warn).and_return(nil)
+				
 				raise "The space time converter has failed."
 			end
 			
