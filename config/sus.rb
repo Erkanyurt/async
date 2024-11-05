@@ -6,4 +6,10 @@
 require "covered/sus"
 include Covered::Sus
 
-ENV["CONSOLE_LEVEL"] ||= "fatal"
+# ENV["CONSOLE_LEVEL"] ||= "fatal"
+
+ENV["TRACES_BACKEND"] ||= "traces/backend/test"
+require 'traces'
+
+ENV["METRICS_BACKEND"] ||= "metrics/backend/test"
+require 'metrics'
